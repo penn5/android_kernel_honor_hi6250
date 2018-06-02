@@ -115,6 +115,7 @@ export quiet Q KBUILD_VERBOSE
 
 # KBUILD_SRC is set on invocation of make in OBJ directory
 # KBUILD_SRC is not intended to be used by the regular user (for now)
+# But for some reason in this version of the source it must be used.
 ifeq ($(KBUILD_SRC),)
 
 # OK, Make called in directory where kernel src resides
@@ -1064,11 +1065,11 @@ PHONY += prepare archprepare prepare0 prepare1 prepare2 prepare3
 prepare3: include/config/kernel.release
 ifneq ($(KBUILD_SRC),)
 	@$(kecho) '  Using $(srctree) as source for kernel'
-	$(Q)if [ -f $(srctree)/.config -o -d $(srctree)/include/config ]; then \
-		echo >&2 "  $(srctree) is not clean, please run 'make mrproper'"; \
-		echo >&2 "  in the '$(srctree)' directory.";\
-		/bin/false; \
-	fi;
+#	$(Q)if [ -f $(srctree)/.config -o -d $(srctree)/include/config ]; then \
+#		echo >&2 "  $(srctree) is not clean, please run 'make mrproper'"; \
+#		echo >&2 "  in the '$(srctree)' directory.";\
+#		/bin/false; \
+#	fi;
 endif
 
 # prepare2 creates a makefile if using a separate output directory
